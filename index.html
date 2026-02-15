@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio créatif | UI & design</title>
+    <!-- Google Fonts et Font Awesome pour une typo moderne et des icônes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fbfdff;
+            color: #1a2639;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        .navbar {
+            padding: 24px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.8rem;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #1e2b4f, #3b4f7c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #2c3e50;
+            transition: color 0.2s;
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover {
+            color: #3b6ea5;
+        }
+
+        /* Header / Hero */
+        .hero {
+            padding: 80px 0 60px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .hero-content {
+            flex: 1 1 350px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(59, 110, 165, 0.1);
+            color: #1f4973;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 6px 14px;
+            border-radius: 40px;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            color: #0b1a30;
+        }
+
+        .hero-highlight {
+            color: #2b5f9e;
+            border-bottom: 3px solid #cbd5e1;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #334155;
+            max-width: 500px;
+            margin-bottom: 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: #1e3a5f;
+            color: white;
+            border: none;
+            padding: 14px 34px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: #143049;
+            transform: scale(1.02);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #1e3a5f;
+            color: #1e3a5f;
+            padding: 12px 32px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-outline:hover {
+            background: #f0f5fe;
+        }
+
+        .hero-image {
+            flex: 1 1 300px;
+            background: #e7edf6;
+            border-radius: 60% 40% 40% 60% / 60% 40% 60% 40%;
+            min-height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 30px 40px -20px rgba(0, 30, 60, 0.25);
+        }
+
+        .hero-image i {
+            font-size: 8rem;
+            color: #2b4c7c;
+            opacity: 0.9;
+        }
+
+        /* Section compétences / services */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            color: #0b1a30;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 4px;
+            background: #2b5f9e;
+            margin-top: 8px;
+            border-radius: 4px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 32px 24px;
+            border-radius: 28px;
+            box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.05);
+            transition: all 0.25s ease;
+            border: 1px solid rgba(0, 0, 0, 0.02);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 30px 35px -12px rgba(26, 47, 80, 0.15);
+            border-color: #d9e5f0;
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            color: #1e3a5f;
+            margin-bottom: 20px;
+        }
+
+        .skill-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .skill-card p {
+            color: #3a4b5e;
+            font-size: 1rem;
+        }
+
+        /* Section projets */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-top: 40px;
+        }
+
+        .project-item {
+            background: #ffffff;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.02);
+            transition: 0.2s ease-in-out;
+            border: 1px solid #eef3f8;
+        }
+
+        .project-item:hover {
+            box-shadow: 0 20px 30px -8px rgba(20, 50, 80, 0.12);
+        }
+
+        .project-img {
+            background: #b8cddf;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1e3a5f;
+            font-size: 3.5rem;
+            transition: 0.2s;
+        }
+
+        .project-item:nth-child(1) .project-img {
+            background: #d4e1f0;
+        }
+
+        .project-item:nth-child(2) .project-img {
+            background: #c3d6e9;
+        }
+
+        .project-item:nth-child(3) .project-img {
+            background: #dceaf5;
+        }
+
+        .project-item:nth-child(4) .project-img {
+            background: #cbdbea;
+        }
+
+        .project-info {
+            padding: 24px;
+        }
+
+        .project-info h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 12px 0 16px;
+        }
+
+        .tag {
+            background: #eaf1fa;
+            color: #1e3a5f;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 30px;
+        }
+
+        .project-link {
+            text-decoration: none;
+            font-weight: 600;
+            color: #1e3a5f;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .project-link i {
+            font-size: 0.8rem;
+            transition: transform 0.2s;
+        }
+
+        .project-link:hover i {
+            transform: translateX(4px);
+        }
+
+        /* Témoignage / citation */
+        .testimonial {
+            background: #f2f8ff;
+            border-radius: 50px;
+            padding: 60px 50px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .testimonial i {
+            font-size: 3rem;
+            color: #779fcb;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+
+        .testimonial p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 25px;
+            font-style: italic;
+            color: #1f3a5b;
+            font-weight: 400;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: #0e2740;
+        }
+
+        /* À propos */
+        .about-wrap {
+            display: flex;
+            gap: 50px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 2 1 300px;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: #253c5c;
+            margin-bottom: 20px;
+        }
+
+        .about-stats {
+            flex: 1 1 200px;
+            background: #edf3fa;
+            border-radius: 40px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #1b3b69;
+            line-height: 1;
+        }
+
+        .stat-label {
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            color: #2c577c;
+        }
+
+        /* Contact */
+        .contact-flex {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            background: #ffffff;
+            border-radius: 40px;
+            padding: 40px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.03);
+        }
+
+        .contact-info {
+            flex: 1 1 250px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 20px 0;
+            color: #2f4858;
+        }
+
+        .contact-detail i {
+            width: 40px;
+            height: 40px;
+            background: #e1ebf7;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1e3a5f;
+        }
+
+        .contact-form {
+            flex: 2 1 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .form-group {
+            flex: 1 1 200px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 15px 20px;
+            border: 1px solid #d5e2ef;
+            border-radius: 40px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            background: white;
+            transition: 0.2s;
+        }
+
+        textarea {
+            border-radius: 30px;
+            resize: vertical;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #3f6ca0;
+            box-shadow: 0 0 0 3px rgba(59, 110, 165, 0.15);
+        }
+
+        .btn-submit {
+            background: #1e3a5f;
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 1rem;
+            align-self: flex-start;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-submit:hover {
+            background: #14355a;
+        }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid #e1eaf1;
+            padding: 30px 0;
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            color: #4a607a;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: #2a4b77;
+            font-size: 1.4rem;
+            transition: color 0.2s;
+        }
+
+        .social-links a:hover {
+            color: #0a253f;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 700px) {
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-image {
+                order: -1;
+            }
+
+            .testimonial {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="logo">P. Portfolio</div>
+            <ul class="nav-links">
+                <li><a href="#">Accueil</a></li>
+                <li><a href="#projets">Projets</a></li>
+                <li><a href="#competences">Compétences</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Hero section -->
+    <div class="container">
+        <header class="hero">
+            <div class="hero-content">
+                <span class="hero-badge"><i class="fas fa-pen-fancy" style="margin-right: 6px;"></i>Designer &
+                    développeur</span>
+                <h1>Créer des expériences <span class="hero-highlight">digitales</span> avec passion</h1>
+                <p>Je transforme des idées en interfaces intuitives et modernes. Spécialisé en UI/UX et développement
+                    front-end.</p>
+                <div class="cta-buttons">
+                    <a href="#projets" class="btn-primary"><i class="fas fa-arrow-down"
+                            style="margin-right: 8px;"></i>Voir mes travaux</a>
+                    <a href="#contact" class="btn-outline">Me contacter</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <i class="fas fa-laptop-code"></i>
+            </div>
+        </header>
+    </div>
+
+    <!-- Section Compétences / Services -->
+    <div class="container" id="competences">
+        <div class="section">
+            <h2 class="section-title">Expertises & services</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fas fa-paint-brush"></i></div>
+                    <h3>UI/UX Design</h3>
+                    <p>Interfaces centrées utilisateur, maquettes interactives, tests d'utilisabilité.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fas fa-code"></i></div>
+                    <h3>Développement front</h3>
+                    <p>HTML5, CSS3, JavaScript, React – des sites responsives et performants.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3>Mobile first</h3>
+                    <p>Design adaptatif, expérience fluide sur tous les appareils.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Identité visuelle</h3>
+                    <p>Création de chartes graphiques, logos et univers de marque cohérents.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section Projets -->
+    <div class="container" id="projets">
+        <div class="section">
+            <h2 class="section-title">Projets récents</h2>
+            <div class="projects-grid">
+                <div class="project-item">
+                    <div class="project-img"><i class="fas fa-cart-shopping"></i></div>
+                    <div class="project-info">
+                        <h3>EcoMarket</h3>
+                        <div class="project-tags"><span class="tag">UX</span><span class="tag">e-commerce</span></div>
+                        <p>Design d'une plateforme de produits locaux avec tunnel d'achat optimisé.</p>
+                        <a href="#" class="project-link">Étude de cas <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <div class="project-img"><i class="fas fa-plane"></i></div>
+                    <div class="project-info">
+                        <h3>VoyageApp</h3>
+                        <div class="project-tags"><span class="tag">mobile</span><span class="tag">UI</span></div>
+                        <p>Application de planification de voyage – interface immersive et carte interactive.</p>
+                        <a href="#" class="project-link">Aperçu <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <div class="project-img"><i class="fas fa-chart-pie"></i></div>
+                    <div class="project-info">
+                        <h3>FinanceFlow</h3>
+                        <div class="project-tags"><span class="tag">Dashboard</span><span class="tag">data-viz</span>
+                        </div>
+                        <p>Tableau de bord financier avec visualisation claire et composants React.</p>
+                        <a href="#" class="project-link">Détails <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <div class="project-img"><i class="fas fa-newspaper"></i></div>
+                    <div class="project-info">
+                        <h3>MediaHub</h3>
+                        <div class="project-tags"><span class="tag">branding</span><span class="tag">site vitrine</span>
+                        </div>
+                        <p>Refonte d'un média en ligne, identité visuelle et expérience éditoriale.</p>
+                        <a href="#" class="project-link">Explorer <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Témoignage / bloc confiance -->
+    <div class="container">
+        <div class="testimonial">
+            <i class="fas fa-quote-right"></i>
+            <p>“Un sens du détail remarquable et une capacité à traduire des besoins flous en designs fonctionnels.
+                Collaboration exemplaire.”</p>
+            <div class="testimonial-author">— Jeanne L., fondatrice de Création&Co</div>
+        </div>
+    </div>
+
+    <!-- À propos + petites stats -->
+    <div class="container">
+        <div class="section">
+            <div class="about-wrap">
+                <div class="about-text">
+                    <h2 class="section-title" style="margin-bottom: 25px;">À propos</h2>
+                    <p>Je m'appelle Alex, designer basé à Paris. Diplômé en design interactif, j'ai travaillé avec des
+                        startups et des entreprises pour créer des produits numériques à la fois esthétiques et
+                        intuitifs.</p>
+                    <p>Ma philosophie : allier créativité et simplicité. Chaque projet commence par une écoute attentive
+                        et aboutit à une solution sur mesure.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-number">5+</div>
+                    <div class="stat-label">ans d'expérience</div>
+                    <div style="margin: 30px 0 20px;">
+                        <hr style="border: 1px dashed #b7cee4;">
+                    </div>
+                    <div class="stat-number">40+</div>
+                    <div class="stat-label">projets livrés</div>
+                    <div style="margin: 30px 0 20px;">
+                        <hr style="border: 1px dashed #b7cee4;">
+                    </div>
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">clients satisfaits</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="container" id="contact">
+        <div class="section">
+            <h2 class="section-title">Travaillons ensemble</h2>
+            <div class="contact-flex">
+                <div class="contact-info">
+                    <h3>Discutons de votre projet</h3>
+                    <p>Que vous ayez une idée précise ou besoin de conseils, je suis à votre écoute.</p>
+                    <div class="contact-detail"><i class="fas fa-envelope"></i> alex.design@portfolio.fr</div>
+                    <div class="contact-detail"><i class="fas fa-phone-alt"></i> +33 6 12 34 56 78</div>
+                    <div class="contact-detail"><i class="fas fa-map-marker-alt"></i> Paris, France</div>
+                </div>
+                <div class="contact-form">
+                    <div class="form-row">
+                        <div class="form-group"><input type="text" placeholder="Nom complet"></div>
+                        <div class="form-group"><input type="email" placeholder="Email"></div>
+                    </div>
+                    <input type="text" placeholder="Sujet">
+                    <textarea rows="4" placeholder="Votre message..."></textarea>
+                    <button class="btn-submit">Envoyer <i class="fas fa-paper-plane"
+                            style="margin-left: 8px;"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="container">
+        <footer class="footer">
+            <div>© 2025 Alexandre Design. Tous droits réservés.</div>
+            <div class="social-links">
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="Behance"><i class="fab fa-behance"></i></a>
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </footer>
+    </div>
+    <!-- Petit script pour rendre les liens internes plus doux (optionnel) -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== "#" && document.querySelector(href)) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
